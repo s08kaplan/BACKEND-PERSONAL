@@ -1,1 +1,3 @@
-Hello let's learn fs module
+Hello let's learn fs module.
+Today we will try to improve our Nodejs skills.
+It is important to practice everyday to learn it better.
