@@ -56,4 +56,37 @@ app.get("/products", (req, res) => {
     ])
 })
 
+app.put("/users/:id", (req, res) => {
+    const { body, params: { id }} = req
+
+    const parsedId = parseInt(id)
+    isNaN(parsedId) && res.sendStatus(400)
+
+    const findUserIndex = mockUsers.findIndex(user => user.id === parsedId)
+
+    findUserIndex === -1 ? res.sendStatus(404) : mockUsers[findUserIndex] = { id: parsedId, ...body}
+    return res.sendStatus(200)
+})
+
+app.patch("/users/:id", (req, res) => {
+    const { body, params: { id }} = req
+
+    const parsedId = parseInt(id)
+    isNaN(parsedId) && res.sendStatus(400)
+
+    const findUserIndex = mockUsers.findIndex(user => user.id === parsedId)
+    findUserIndex === -1 ? res.sendStatus(404) : mockUsers[findUserIndex] = {...mockUsers[findUserIndex], ...body}
+    return res.sendStatus(200)
+})
+
+app.delete("/users/:id", (req, res) => {
+    const { params: { id }} = req
+    const parsedId = parseInt(id)
+    isNaN(parsedId) && res.sendStatus(400)  
+    const findUserIndex = mockUsers.findIndex(user => user.id === parsedId)
+    findUserIndex === -1 ? res.sendStatus(404) : mockUsers.splice(findUserIndex,1)
+    return res.sendStatus(200)
+})
+
+
 app.listen(PORT, () => console.log(`Example app listening at http://localhost:${PORT}`))
