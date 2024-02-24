@@ -6,13 +6,25 @@ const PORT = process.env.PORT || 3000
 mockUsers = [
     {id: 1, username: "Ali", firstName: "Abdullah"}, 
     {id: 2, username: "Veli", firstName: "Hakan"}, 
-    {id: 3, username: "Danny", firstName: "Deli"} 
+    {id: 3, username: "Penny", firstName: "Beth"}, 
+    {id: 4, username: "Jenny", firstName: "Jennifer"}, 
+    {id: 5, username: "Harry", firstName: "Danny"}, 
+    {id: 6, username: "Sevim", firstName: "Canan"}, 
+    {id: 7, username: "Han", firstName: "Alp"}, 
+    {id: 8, username: "Serhat", firstName: "Sedat"}, 
 ]
 
 
 app.get('/', (req, res) => res.send('Hello, Welcome to our World!'))
 app.get("/users", (req, res) => {
-    res.send(mockUsers)
+    console.log(req.query);
+    const { query: { filter, value} } = req
+  
+   filter && value ? res.send(
+    mockUsers.filter(user => user[filter].includes(value))
+   )
+   :
+    res.send(mockUsers) 
 })
 
 app.get("/users/:id", (req, res) => {
