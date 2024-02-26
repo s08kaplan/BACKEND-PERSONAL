@@ -7,21 +7,25 @@ const {
   checkSchema,
 } = require("express-validator");
 const userValidationSchema = require("./utils/validationSchemas");
+require("./routes/users")
+require("./utils/constants")
+
 const app = express();
 app.use(express.json());
+app.use(usersRouter)
 
 const PORT = process.env.PORT || 3000;
 
-mockUsers = [
-  { id: 1, username: "Ali", firstName: "Abdullah" },
-  { id: 2, username: "Veli", firstName: "Hakan" },
-  { id: 3, username: "Penny", firstName: "Beth" },
-  { id: 4, username: "Jenny", firstName: "Jennifer" },
-  { id: 5, username: "Harry", firstName: "Danny" },
-  { id: 6, username: "Sevim", firstName: "Canan" },
-  { id: 7, username: "Han", firstName: "Alp" },
-  { id: 8, username: "Serhat", firstName: "Sedat" },
-];
+// mockUsers = [
+//   { id: 1, username: "Ali", firstName: "Abdullah" },
+//   { id: 2, username: "Veli", firstName: "Hakan" },
+//   { id: 3, username: "Penny", firstName: "Beth" },
+//   { id: 4, username: "Jenny", firstName: "Jennifer" },
+//   { id: 5, username: "Harry", firstName: "Danny" },
+//   { id: 6, username: "Sevim", firstName: "Canan" },
+//   { id: 7, username: "Han", firstName: "Alp" },
+//   { id: 8, username: "Serhat", firstName: "Sedat" },
+// ];
 
 app.get("/", (req, res) => res.send("Hello, Welcome to our World!"));
 
