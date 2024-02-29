@@ -1,0 +1,89 @@
+Regex (Düzenli İfadeler) kullanımında bazı yaygın semboller ve durumlar şunlardır:
+
+. (Nokta): Herhangi bir tek karakterle eşleşir (yeni satır karakteri hariç). Örnek: a.c → "abc", "axc" ile eşleşir, ama "ac" ile eşleşmez.
+* (Yıldız): Öncesindeki karakterin sıfır veya daha fazla tekrarıyla eşleşir. Örnek: ab*c → "ac", "abc", "abbc" ile eşleşir.
++ (Artı): Öncesindeki karakterin bir veya daha fazla tekrarıyla eşleşir. Örnek: ab+c → "abc", "abbc" ile eşleşir, ama "ac" ile eşleşmez.
+? (Soru İşareti): Öncesindeki karakterin sıfır veya bir tekrarıyla eşleşir. Örnek: ab?c → "ac", "abc" ile eşleşir.
+^ (Başlangıç): Bir dizenin başlangıcıyla eşleşir. Örnek: ^abc → "abc" ile başlayan dizilerle eşleşir.
+$ (Son): Bir dizenin sonuyla eşleşir. Örnek: abc$ → "abc" ile biten dizilerle eşleşir.
+[ ] (Karakter Sınıfı): Köşeli parantezler içinde belirtilen karakterlerden herhangi biriyle eşleşir. Örnek: a[bcd]e → "abe", "ace", "ade" ile eşleşir.
+| (Alternatif): Belirtilen alternatiflerden herhangi biriyle eşleşir. Örnek: a|b → "a" veya "b" ile eşleşir.
+{n} (Kesin Sayıda Tekrar): Öncesindeki karakterin tam olarak n kez tekrarlanmasıyla eşleşir. Örnek: a{2} → "aa" ile eşleşir.
+{n,} (En Az n Tekrar): Öncesindeki karakterin en az n kez tekrarlanmasıyla eşleşir. Örnek: a{2,} → "aa", "aaa", "aaaa" ile eşleşir.
+{n,m} (n ile m Arası Tekrar): Öncesindeki karakterin n ile m kez arasında tekrarlanmasıyla eşleşir. Örnek: a{2,3} → "aa", "aaa" ile eşleşir.
+
+
+*: Matches zero or more occurrences.
++: Matches one or more occurrences.
+?: Matches zero or one occurrence.
+{n}: Matches exactly n occurrences.
+{n,}: Matches n or more occurrences.
+{n,m}: Matches at least n and at most m occurrences.
+
+1. Literal Characters
+Literal characters in a regex match themselves. For example, /hello/ would match the string "hello".
+
+
+let regex = /hello/;
+console.log(regex.test("hello")); // true
+console.log(regex.test("world")); // false
+
+*********************************************
+2. Character Classes
+Character classes allow you to match any one of a set of characters.
+
+[abc]: Matches any of the characters a, b, or c.
+
+let regex = /[abc]/;
+console.log(regex.test("apple")); // true
+console.log(regex.test("banana")); // true
+console.log(regex.test("orange")); // false
+
+***********************************************************
+
+
+3. Quantifiers
+Quantifiers specify how many instances of a character, group, or character class must be present in the input for a match to be found.
+
+*: Matches zero or more occurrences.
++: Matches one or more occurrences.
+?: Matches zero or one occurrence.
+{n}: Matches exactly n occurrences.
+{n,}: Matches n or more occurrences.
+{n,m}: Matches at least n and at most m occurrences.
+
+let regex = /a+/; // Matches one or more 'a'
+console.log(regex.test("apple")); // true
+console.log(regex.test("banana")); // false
+
+let regex2 = /\d{3}/; // Matches exactly three digits
+console.log(regex2.test("123")); // true
+console.log(regex2.test("12")); // false
+
+**********************************************************
+
+4. Anchors
+Anchors assert a position in the string rather than matching a character.
+
+^: Matches the start of a string.
+$: Matches the end of a string.
+
+let regex = /^hello/; // Matches 'hello' at the start of the string
+console.log(regex.test("hello world")); // true
+console.log(regex.test("world hello")); // false
+
+let regex2 = /world$/; // Matches 'world' at the end of the string
+console.log(regex2.test("hello world")); // true
+console.log(regex2.test("world hello")); // false
+
+*************************************************************
+
+5. Groups
+Groups allow you to treat multiple characters as a single unit.
+
+(): Groups multiple tokens together.
+
+let regex = /(abc)+/; // Matches one or more occurrences of 'abc'
+console.log(regex.test("abc")); // true
+console.log(regex.test("abcabc")); // true
+console.log(regex.test("def")); // false

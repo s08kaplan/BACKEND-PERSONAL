@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Team Work 03 REGEX</title>
+  </head>
+  <body>
+    <h1>Team Work 03 REGEX A.K.A Chinese like letters 🤣</h1>
+    <div class="main">
+      <div class="container">
+        <div class="message">
+          <h2></h2>
+        </div>
+        <div class="regex-info">
+          <ol>
+            <li>
+              <span>Literal Characters:</span>
+              Literal characters in a regex match themselves. For example,
+              /hello/ would match the string "hello". let regex = /hello/;
+              console.log(regex.test("hello")); // true
+              console.log(regex.test("world")); // false
+            </li>
+
+            <li>
+              <span>Character Classes:</span>
+              Character classes allow you to match any one of a set of
+              characters. [abc]: Matches any of the characters a, b, or c. let
+              regex = /[abc]/; console.log(regex.test("apple")); // true
+              console.log(regex.test("banana")); // true
+              console.log(regex.test("orange")); // false
+            </li>
+
+            <li>
+              <span>Quantifiers:</span>
+              Quantifiers specify how many instances of a character, group, or
+              character class must be present in the input for a match to be
+              found. *: Matches zero or more occurrences. +: Matches one or more
+              occurrences. ?: Matches zero or one occurrence. {n}: Matches
+              exactly n occurrences. {n,}: Matches n or more occurrences. {n,m}:
+              Matches at least n and at most m occurrences. let regex = /a+/; //
+              Matches one or more 'a' console.log(regex.test("apple")); // true
+              console.log(regex.test("banana")); // false let regex2 = /\d{3}/;
+              // Matches exactly three digits console.log(regex2.test("123"));
+              // true console.log(regex2.test("12")); // false
+            </li>
+
+            <li>
+              <span>Anchors:</span>
+              Anchors assert a position in the string rather than matching a
+              character. ^: Matches the start of a string. $: Matches the end of
+              a string. let regex = /^hello/; // Matches 'hello' at the start of
+              the string console.log(regex.test("hello world")); // true
+              console.log(regex.test("world hello")); // false let regex2 =
+              /world$/; // Matches 'world' at the end of the string
+              console.log(regex2.test("hello world")); // true
+              console.log(regex2.test("world hello")); // false
+            </li>
+
+            <li>
+              <span>Groups:</span>
+              Groups allow you to treat multiple characters as a single unit.
+              (): Groups multiple tokens together. let regex = /(abc)+/; //
+              Matches one or more occurrences of 'abc'
+              console.log(regex.test("abc")); // true
+              console.log(regex.test("abcabc")); // true
+              console.log(regex.test("def")); // false
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="./tw-03-2.js"></script>
+</html>
