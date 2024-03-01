@@ -1,7 +1,8 @@
 // import { title } from "./get-elements"
 const title = document.querySelector(".message").querySelector("h2")
-const titleMessage = document.createTextNode("hi")
+const titleMessage = document.createTextNode("hi".toUpperCase())
 title.appendChild(titleMessage)
+title.style.color="magenta"
 console.log(title);
 
 const ol = document.querySelector(".regex-info") 
