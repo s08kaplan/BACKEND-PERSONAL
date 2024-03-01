@@ -39,6 +39,7 @@
 // ! for middlewares if we want to use middlewares for specific situations no need to use app.use()
 const express = require("express");
 const app = express();
+const path = require("path")
 
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
@@ -63,8 +64,16 @@ app.get("/", middlewareGet, (req, res) => {
 });
 
 // Apply middlewarePost only for specific routes
-app.post("/users", middlewarePost, (req, res) => {
-  res.send("Welcome to the blog page");
+// app.post("/users", middlewarePost, (req, res) => {
+//   res.send("Welcome to the blog page");
+// });
+app.get("/users", middlewarePost, (req, res) => {
+//   res.sendFile(__dirname + "/router.txt");
+//   res.sendFile(path.join(__dirname, "../TEAMWORK/tw-03/regex.txt"));
+//   res.sendFile(path.join(__dirname, "../TEAMWORK/tw-03/index.html"));
+  res.sendFile(path.join(__dirname, "./users.json"));
+
+
 });
 
 app.get("/personal", middlewarePost, (req, res) => {
@@ -75,6 +84,7 @@ app.get("/personal", middlewarePost, (req, res) => {
     password: password,
   });
 });
+
 
 app.listen(PORT, () =>
   console.log(`Server is running on http://${HOST}:${PORT}`)
