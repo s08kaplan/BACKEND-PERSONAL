@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+
+}
+
+main{
+
+    & div{
+
+        & form {
+            margin: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+
+            & input[type="email"]{
+margin-left: 2rem;
+            }
+            & button {
+                padding: .5rem;
+                border-radius: .5rem;
+                background-color: red;
+                color: white;
+
+                &:hover{
+                    color: red;
+                    background-color: white;
+                }
+            }
+        }
+    }
+ & p {
+    text-align: center;
+    margin: 1rem;
+    font-size: xx-large;
+ }
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        font-size: x-large;
+        font-weight: 600;
+
+    }
+}
