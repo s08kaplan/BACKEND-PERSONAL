@@ -42,6 +42,15 @@ const User = sequelize.define("users", {
 
 })
 
+User.beforeCreate(async (user, options) => {
+    try {
+        const hashedPassword = await bcrypt.hash(user.password, 8)
+        user.password = hashedPassword
+    } catch (error) {
+        throw new Error("Error hashing password!!")
+    }
+})
+
 // sequelize.sync()
 // .then(()=> console.log("!!!!!! DB synchronized SUCCESSFULLY :)"))
 // .catch(error => console.log("oooohhhh nooooo",error))
