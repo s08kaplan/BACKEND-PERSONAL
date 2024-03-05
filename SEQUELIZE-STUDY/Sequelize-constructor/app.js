@@ -27,18 +27,22 @@ const User = sequelize.define("users", {
             isEmail: true
         }
     },
-     password: {
-        type: DataTypes.STRING,
+    //  password: {
+    //     type: DataTypes.STRING,
+    //     allowNull: false,
+    //     set(value) {
+    //         bcrypt.hash(value, 8, (error, hash) => {
+    //             if(error) {
+    //                 throw new Error("Error hashing password!")
+    //             }
+    //             this.setDataValue("password", hash)
+    //         })
+    //     }
+    //  }
+    password: {
+        type: DataTypes.TEXT,
         allowNull: false,
-        set(value) {
-            bcrypt.hash(value, 8, (error, hash) => {
-                if(error) {
-                    throw new Error("Error hashing password!")
-                }
-                this.setDataValue("password", hash)
-            })
-        }
-     }
+    }
 
 })
 
