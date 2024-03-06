@@ -6,6 +6,8 @@ const cors = require("cors")
 const router = require("express").Router()
 app.use(cors())
 
+
+
 const PORT = process.env.PORT || 8000
 
 app.use(router)
@@ -42,7 +44,8 @@ router.route("/")
 
 router.route("/users")
 .post(getUserValue,(req, res) => {
-res.send("ok got the info")
+    const { username } = req.body
+res.send({message:"ok got the info", data: username})
 })
 
 

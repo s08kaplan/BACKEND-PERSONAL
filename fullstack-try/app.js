@@ -44,7 +44,10 @@ userData.innerHTML= `
 `
 }
 
+// li.addEventListener("click", () => {
+//   window.location.pathname = "/users.html"
+// })
 li.addEventListener("click", () => {
-  window.location.pathname = "/users.html"
+  window.location.pathname = "fullstack-try/users.html"
 })
 
