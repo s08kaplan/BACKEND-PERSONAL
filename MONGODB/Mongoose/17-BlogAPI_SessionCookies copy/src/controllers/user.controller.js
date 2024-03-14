@@ -60,7 +60,8 @@ module.exports = {
         //     password: user.password
         // }
 
-        req.session.email = user.email
+        // req.session.email = user.email
+        req.session.id = user.id
         req.session.password = user.password
 
         if(req.body?.remindMe) {
