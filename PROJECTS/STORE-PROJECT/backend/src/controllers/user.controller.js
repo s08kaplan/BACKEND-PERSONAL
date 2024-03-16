@@ -41,7 +41,15 @@ module.exports = {
     const data = await User.deleteOne({ _id: req.params.userId });
     res.sendStatus(data.deletedCount >= 1 ? 204 : 404);
   },
-  register: {},
+  register: async (req, res) => {
+    const { username, firstName, lastName, email, password, image, bio} = req.body
+     const newUser = await User.create({ username, firstName, lastName, email, password, image, bio})
+     res.status(201).send({
+      error: false,
+      message:"New user added successfully!",
+      newUser
+     })
+  },
   login: async (req, res) => {
     const { email, password } = req.body;
     if (email && password) {
@@ -72,7 +80,11 @@ module.exports = {
       throw new Error("Email and Password must be filled");
     }
   },
-  logout: {
-    
+  logout: async (req, res) => {
+    req.session = null
+    res.status(200).send({
+      error: false,
+      message:"Logged out successfully!"
+    })
   },
 };

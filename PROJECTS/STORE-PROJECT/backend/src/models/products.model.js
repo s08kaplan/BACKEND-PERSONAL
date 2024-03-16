@@ -16,7 +16,7 @@ const ProductSchema = new mongoose.Schema({
         required: [true, "Please enter the product' title"]
     },
     description: {
-        type: Text,
+        type: String,
         trim: true,
         required : [true, "Don't forget to mention the product' properties"]
     },
@@ -28,17 +28,17 @@ const ProductSchema = new mongoose.Schema({
     },
 
     price: {
-      type: Integer,
+      type: Number,
       trim: true,
       required: [true, "Forgot to enter the price!!!"]
     },
 
     discountPercentage: {
-        type: Integer,
+        type: Number,
         trim: true,
     },
     stock: {
-       type: Integer,
+       type: Number,
        trim: true,
     },
 

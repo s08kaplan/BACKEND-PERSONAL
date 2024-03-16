@@ -42,7 +42,7 @@ const UserSchema = new mongoose.Schema({
     },
 
     image: String,
-    bio: Text
+    bio: String
 },
 {
     collection: "user",
