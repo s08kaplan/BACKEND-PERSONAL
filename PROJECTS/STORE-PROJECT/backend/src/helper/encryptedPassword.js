@@ -7,5 +7,5 @@
  const encType = "sha512"
 
  module.exports = (password) => {
-    return crypto.pbkdf2Sync(password, keyCode, loopCount, charCount, encType)
+    return crypto.pbkdf2Sync(password, keyCode, loopCount, charCount, encType).toString("hex")
  }

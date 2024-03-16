@@ -1,7 +1,7 @@
 "use strict"
 
 module.exports = (req, res, next) => {
-  const { filter, search, sort, page, limit,skip } = req.query
+  let { filter, search, sort, page, limit,skip } = req.query
 // ! FILTER
  filter = filter || {}
 
