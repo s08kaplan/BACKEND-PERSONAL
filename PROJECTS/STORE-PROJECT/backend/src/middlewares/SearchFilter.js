@@ -28,7 +28,7 @@ page = page > 0 ? (page - 1) : 0
 skip = Number(skip)
 skip = skip > 0 ? skip : (page * limit)
 
-// ! Dynamic Perpous for models to use in controller file
+// ! Dynamic Purpose for models to use in controller file
 res.getModelList = async (Model, populate = null) => {
     return await Model.find({...filter, ...search }).sort(sort).skip(skip).limit(limit).populate(populate)
 }
