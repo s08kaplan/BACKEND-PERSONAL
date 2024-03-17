@@ -18,6 +18,8 @@ const HOST = process.env.HOST
 //!DB connection
 require("./src/config/dbConnection")
 
+
+
 // !Seesion-Cookies
 const session = require("cookie-session")
 app.use(session({
@@ -48,6 +50,9 @@ app.all("/",(req, res) => {
 })
 
 app.use("/user",require("./src/routes/user.router"))
+app.use("/products", require("./src/routes/products.router"))
 
 app.use(require("./src/middlewares/errorHandler") )  //*errorHandler required
 app.listen(PORT, () => console.log(`Server is running on http://${HOST}:${PORT}`))
+
+// require("./sync")()

@@ -37,13 +37,13 @@ const ProductSchema = new mongoose.Schema({
         type: Number,
         trim: true,
     },
-    stock: {
+    stock_count: {
        type: Number,
        trim: true,
     },
 
-    images: {
-        type:[String],
+    image: {
+        type:String,
         required: [true, "Please add the product' image "]
     }
 

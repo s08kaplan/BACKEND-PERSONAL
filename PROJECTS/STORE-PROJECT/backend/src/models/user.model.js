@@ -42,11 +42,16 @@ const UserSchema = new mongoose.Schema({
     },
 
     image: String,
-    bio: String
+    bio: String,
+    isAdmin : {
+        type: Boolean,
+        default: false
+    }
 },
 {
     collection: "user",
     timestamps: true
 })
+
 
 module.exports = mongoose.model("User", UserSchema)
