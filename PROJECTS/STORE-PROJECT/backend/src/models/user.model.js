@@ -1,9 +1,9 @@
 "use strict"
 
-const mongoose = require("mongoose")
+const { Schema, model} = require("../config/dbConnection")
 const isValidEmail = require("../helper/isValidEmail") //? email validation function required
-const encryptedPassword = require("../helper/encryptedPassword")
-const UserSchema = new mongoose.Schema({
+const encryptedPassword = require("../helper/encryptedPassword") //? to encrypt the user' password
+const UserSchema = new Schema({
  
 
     email: {
@@ -42,16 +42,21 @@ const UserSchema = new mongoose.Schema({
     },
 
     image: String,
-    bio: String,
+    bio: Text,
     isAdmin : {
         type: Boolean,
         default: false
+    },
+    isActive: {
+        type: Boolean,
+        default: false
     }
+
 },
 {
-    collection: "user",
+    collection: "users",
     timestamps: true
 })
 
 
-module.exports = mongoose.model("User", UserSchema)
+module.exports = model("User", UserSchema)

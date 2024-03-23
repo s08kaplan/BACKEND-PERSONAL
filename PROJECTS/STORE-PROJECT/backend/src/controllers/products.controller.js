@@ -15,13 +15,21 @@ module.exports = {
 
     },
     create: async (req, res) => {
-        
-        const data = await Products.create(req.body)
+        const { isAdmin } = req.body
+        if(isAdmin) {
+           const data = await Products.create(req.body)
         res.status(201).send({
             error: false,
             body: req.body,
             data
-        })
+        })  
+        }else {
+            res.status(401).send({
+               error: true,
+               message: "You must be Admin to do this operation"
+            })
+        }
+       
     },
     read: async (req, res) => {
        const data = await Products.findOne({ _id: req.params.productId})

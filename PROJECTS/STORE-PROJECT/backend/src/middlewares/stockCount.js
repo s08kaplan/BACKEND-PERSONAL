@@ -2,7 +2,8 @@
 
 const Products = require("../models/products.model")
 module.exports = async (req, res, next) => {
-    let existingProduct = await Products.findOne({stock_count: req.body.stock_count})
+  const { stock_count,productId } = req.body
+    let existingProduct = await Products.findOne({_id: req.body.productId})
     if(existingProduct) {
        return existingProduct.stock_count++
         
