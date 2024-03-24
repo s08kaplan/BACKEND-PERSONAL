@@ -1,16 +1,16 @@
 "use strict"
 
 const router = require("express").Router()
-const Products = require("../controllers/products.controller")
+const Product = require("../controllers/products.controller")
 
 router.route("/")
-.get(Products.list)
-.post(Products.create)
+.get(Product.list)
+.post(Product.create)
 
 router.route("/:productId")
-.get(Products.read)
-.put(Products.update)
-.patch(Products.update)
-.delete(Products.delete)
+.get(Product.read)
+.put(Product.update)
+.patch(Product.update)
+.delete(Product.delete)
 
 module.exports = router

@@ -2,7 +2,7 @@
 
 const { Schema, model } = require("../config/dbConnection");
 
-const ProductSchema = new mongoose.Schema(
+const ProductSchema = new Schema(
   {
     categoryId: {
       type: Schema.Types.ObjectId,

@@ -8,4 +8,4 @@ mongoose.connect(MONGODB)
 .then(() => console.log("DB connected SUCCESSFULLY"))
 .catch((err) => console.log("DB NOT connected!!!",err))
 
-module.exports = { mongoose }
+module.exports = mongoose 

@@ -1,55 +1,70 @@
-"use strict"
+"use strict";
 
-require("express-async-errors")
-const Products = require("../models/products.model")
+require("express-async-errors");
+const Products = require("../models/products.model");
 
 module.exports = {
-
-    list: async (req, res) => {
-        const data = await res.getModelList(Products)
-        res.status(200).send({
-            error: false,
-            details: await res.getModelListDetails(Products),
-            data
-        })
-
-    },
-    create: async (req, res) => {
-        const { isAdmin } = req.body
-        if(isAdmin) {
-           const data = await Products.create(req.body)
-        res.status(201).send({
-            error: false,
-            body: req.body,
-            data
-        })  
-        }else {
-            res.status(401).send({
-               error: true,
-               message: "You must be Admin to do this operation"
-            })
-        }
-       
-    },
-    read: async (req, res) => {
-       const data = await Products.findOne({ _id: req.params.productId})
-       res.status(202).send({
-        error: false,
-        data
-       })
-    },
-    update: async (req, res) => {
-       const data = await Products.updateOne({ _id: req.params.productId}, req.body)
-       const updatedData = await Products.findOne({ _id: req.params.productId})
-       res.status(202).send({
+  list: async (req, res) => {
+    const data = await res.getModelList(Products);
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(Products),
+      data,
+    });
+  },
+  create: async (req, res) => {
+    const { isAdmin } = req.body;
+    if (isAdmin) {
+      const data = await Products.create(req.body);
+      res.status(201).send({
         error: false,
         body: req.body,
         data,
-        updatedData
-       })
-    },
-    delete: async (req, res) => {
-       const data = await Products.deleteOne({ _id: req.params.productId})
-       res.sendStatus((data.deletedCount >=1) ? 204 : 404)
-    },
-}
+      });
+    } else {
+      res.status(401).send({
+        error: true,
+        message: "You must be Admin to do this operation",
+      });
+    }
+  },
+  read: async (req, res) => {
+    const data = await Products.findOne({ _id: req.params.productId });
+    res.status(202).send({
+      error: false,
+      data,
+    });
+  },
+  update: async (req, res) => {
+    const user = req.body?.user;
+    const admin = req.body?.isAdmin;
+    if ((user && isActive) || admin) {
+      const data = await Products.updateOne(
+        { _id: req.params.productId },
+        req.body
+      );
+      const updatedData = await Products.findOne({ _id: req.params.productId });
+      res.status(202).send({
+        error: false,
+        body: req.body,
+        data,
+        updatedData,
+      });
+    }else{
+      throw new Error("You must be logged in otherwise You cannot do this operation")
+    }
+  },
+  delete: async (req, res) => {
+    const {isAdmin } = req.body
+    if(isAdmin){
+       const data = await Products.deleteOne({ _id: req.params.productId });
+    res.sendStatus(data.deletedCount >= 1 ? 204 : 404); 
+    }else{
+        res.status(401).send({
+            error: true,
+            message: "You are not supposed to delete an item, you must be Admin "
+        })
+    }
+    
+  },
+};

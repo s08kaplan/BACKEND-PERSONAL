@@ -42,7 +42,7 @@ const UserSchema = new Schema({
     },
 
     image: String,
-    bio: Text,
+    bio: String,
     isAdmin : {
         type: Boolean,
         default: false
