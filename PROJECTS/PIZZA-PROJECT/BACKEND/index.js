@@ -5,9 +5,13 @@ const app = express()
 
 app.use(express.json())
 
+//! .env variables required
 require("dotenv").config()
 const PORT = process.env.PORT
 const HOST = process.env.HOST
+
+//! async-errors to errorHandler
+require("express-async-errors")
 
 //! DB CONNECTION
 const { dbConnection } = require("./src/config/dbConnection")
