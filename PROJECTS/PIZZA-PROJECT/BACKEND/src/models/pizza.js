@@ -6,12 +6,11 @@ const {
 
 const PizzaSchema = new Schema(
   {
-    toppingId: {
+    toppingIds: [{
       type: Schema.Types.ObjectId,
       ref: "Topping",
-      trim: true,
-      required: true,
-    },
+      
+    }],
 
     name: {
       type: String,
@@ -25,8 +24,7 @@ const PizzaSchema = new Schema(
       required: true,
     },
     price: {
-      type: Decimal128,
-      trim: true,
+      type: Number,
       required: true,
     }
   },

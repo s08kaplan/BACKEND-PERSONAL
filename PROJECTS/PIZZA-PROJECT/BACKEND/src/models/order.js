@@ -7,36 +7,34 @@ userId: {
     type: Schema.Types.ObjectId,
     ref: "User",
     required: true,
-    index: true,
-    unique: true,
+   
 },
 pizzaId: {
     type: Schema.Types.ObjectId,
     ref: "Pizza",
     required: true,
-    unique: true,
+    
 },
 size: {
     type: String,
     trim: true,
     required: true,
+    enum: ['Small', 'Medium', 'Large', 'XLarge']
 },
 quantity: {
     type: Number,
-    trim: true,
-    required: true
+    default: 1
 },
 
 price: {
-type: Decimal128,
-trim: true,
+type: Number,
 required: true
 },
 
 amount: {
-    type: Decimal128,
-    trim: true,
-    required: true
+    type: Number,
+    default: function(){ return this.quantity * this.price }, // Create
+    transform: function(){ return this.quantity * this.price }, // Update
 }
 }, {
     collection: "orders",

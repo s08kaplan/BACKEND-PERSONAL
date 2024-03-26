@@ -32,7 +32,7 @@ const UserSchema = new Schema({
     },
     isAdmin:{
         type: Boolean,
-        default: true
+        default: false
     },
 }, {
     collection:"users",
